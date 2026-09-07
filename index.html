@@ -285,9 +285,91 @@
       gap:18px;
       flex-wrap:wrap;
     }
+
+    .quote{
+      background:#fff;
+    }
+    .quote-grid{
+      display:grid;
+      grid-template-columns:.8fr 1.2fr;
+      gap:46px;
+      align-items:start;
+    }
+    .quote-copy h2{
+      margin:0 0 16px;
+      font-size:clamp(34px,4vw,50px);
+      letter-spacing:-1.5px;
+      color:var(--navy);
+    }
+    .quote-copy p{
+      margin:0 0 22px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.65;
+    }
+    .quote-form{
+      background:var(--light);
+      border:1px solid #dfeaf4;
+      border-radius:24px;
+      padding:30px;
+      box-shadow:0 12px 34px rgba(7,23,43,.08);
+    }
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    .field{
+      display:grid;
+      gap:8px;
+    }
+    .field.full{
+      grid-column:1 / -1;
+    }
+    .field label{
+      font-weight:800;
+      color:#17314e;
+      font-size:14px;
+    }
+    .field input,
+    .field select,
+    .field textarea{
+      width:100%;
+      border:1px solid #bfd0df;
+      border-radius:12px;
+      background:#fff;
+      padding:14px 15px;
+      font:inherit;
+      color:var(--ink);
+      outline:none;
+    }
+    .field textarea{
+      min-height:130px;
+      resize:vertical;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus{
+      border-color:var(--blue2);
+      box-shadow:0 0 0 3px rgba(0,115,215,.10);
+    }
+    .quote-form .btn{
+      border:0;
+      cursor:pointer;
+      margin-top:18px;
+      width:100%;
+    }
+    .form-note{
+      margin-top:12px;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.45;
+      text-align:center;
+    }
+
     @media(max-width:900px){
       .links a:not(.cta){display:none}
-      .hero-grid,.work-grid,.contact-box{grid-template-columns:1fr}
+      .hero-grid,.work-grid,.contact-box,.quote-grid{grid-template-columns:1fr}
       .hero{padding-top:48px}
       .hero-photo{transform:none}
       .cards{grid-template-columns:1fr 1fr}
@@ -295,7 +377,8 @@
       .trust .wrap{grid-template-columns:1fr}
     }
     @media(max-width:560px){
-      .cards{grid-template-columns:1fr}
+      .cards,.form-grid{grid-template-columns:1fr}
+      .field.full{grid-column:auto}
       .topbar .wrap{justify-content:center;gap:10px 16px}
       .logo img{width:180px}
       .nav{min-height:74px}
@@ -307,7 +390,7 @@
   <div class="topbar">
     <div class="wrap">
       <a href="tel:0404160274">Ph: 0404 160 274</a>
-      <a href="mailto:amppressurecleaning@gmail.com">amppressurecleaning@gmail.com</a>
+      <a href="#quote">amppressurecleaning@gmail.com</a>
     </div>
   </div>
 
@@ -334,7 +417,7 @@
           <p>Professional pressure cleaning for homes, businesses and exterior surfaces across the Gold Coast. Reliable service, powerful equipment and a clean finish you can see.</p>
           <div class="hero-actions">
             <a class="btn primary" href="tel:0404160274">Call for a Quote</a>
-            <a class="btn secondary" href="https://outlook.office.com/mail/deeplink/compose?to=amppressurecleaning@gmail.com" target="_blank" rel="noopener noreferrer">Email AMP Pressure Cleaning</a>
+            <a class="btn secondary" href="#quote">Get a Quote</a>
             <a class="btn secondary" href="https://www.instagram.com/amp_pressurecleaning/" target="_blank" rel="noopener noreferrer" aria-label="Add AMP Pressure Cleaning on Instagram">◎ Add us on Instagram</a>
           </div>
         </div>
@@ -403,8 +486,65 @@
             <li>Driveways, paths and entry areas</li>
             <li>Soft washing for suitable surfaces</li>
           </ul>
-          <a class="btn primary" href="tel:0404160274">Get a Quote</a>
+          <a class="btn primary" href="#quote">Get a Quote</a>
         </div>
+      </div>
+    </section>
+
+
+    <section class="quote" id="quote">
+      <div class="wrap quote-grid">
+        <div class="quote-copy">
+          <span class="eyebrow">Get a Quote</span>
+          <h2>Tell us what needs cleaning.</h2>
+          <p>Send through a few details and AMP Pressure Cleaning will get back to you about your job.</p>
+          <ul class="ticks">
+            <li>Gold Coast based</li>
+            <li>Residential & commercial work</li>
+            <li>Driveways, paths, patios, roofs and soft washing</li>
+          </ul>
+          <a class="btn secondary" href="tel:0404160274">Prefer to call? 0404 160 274</a>
+        </div>
+
+        <form class="quote-form" action="https://formspree.io/f/meaqrjrp" method="POST">
+          <input type="hidden" name="_subject" value="New AMP Pressure Cleaning Quote Request" />
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Name *</label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="phone">Phone *</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" required />
+            </div>
+            <div class="field">
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="suburb">Suburb</label>
+              <input id="suburb" name="suburb" type="text" autocomplete="address-level2" />
+            </div>
+            <div class="field full">
+              <label for="service">What needs cleaning? *</label>
+              <select id="service" name="service" required>
+                <option value="" selected disabled>Select a service</option>
+                <option>Driveway</option>
+                <option>Paths & Patios</option>
+                <option>Soft Washing</option>
+                <option>Roof</option>
+                <option>Commercial</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="message">Job details *</label>
+              <textarea id="message" name="message" placeholder="Tell us a little about the area you need cleaned..." required></textarea>
+            </div>
+          </div>
+          <button class="btn primary" type="submit">SEND QUOTE REQUEST</button>
+          <div class="form-note">Your enquiry will be sent directly to AMP Pressure Cleaning.</div>
+        </form>
       </div>
     </section>
 
@@ -416,7 +556,7 @@
         </div>
         <div class="contact-actions">
           <a class="btn primary" href="tel:0404160274">0404 160 274</a>
-          <a class="btn secondary" style="color:#fff;border-color:#41607f;background:transparent" href="https://outlook.office.com/mail/deeplink/compose?to=amppressurecleaning@gmail.com" target="_blank" rel="noopener noreferrer">Email Us</a>
+          <a class="btn secondary" style="color:#fff;border-color:#41607f;background:transparent" href="#quote">Quote Request</a>
         </div>
       </div>
     </section>
