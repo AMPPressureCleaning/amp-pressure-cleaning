@@ -384,6 +384,13 @@
       .nav{min-height:74px}
       h1{letter-spacing:-1.8px}
     }
+  
+    .links a.active-tab{
+      color:var(--blue);
+      border-bottom:2px solid currentColor;
+      padding-bottom:4px;
+    }
+
   </style>
 </head>
 <body>
@@ -394,19 +401,19 @@
 
   <header>
     <div class="wrap nav">
-      <a class="logo" href="#home" aria-label="AMP Pressure Cleaning home">
+      <a class="logo" href="#" onclick="showView('home'); return false;" aria-label="AMP Pressure Cleaning home">
         <img src="assets/amp-pressure-cleaning-logo.png" alt="AMP Pressure Cleaning logo" />
       </a>
       <nav class="links" aria-label="Primary navigation">
-        <a href="https://amppressurecleaning.github.io/amp-pressure-cleaning/#services" target="_self">Services</a>
-        <a href="https://amppressurecleaning.github.io/amp-pressure-cleaning/#quote" target="_self">Contact</a>
+        <a href="#" data-view-link="services" onclick="showView('services'); return false;">Services</a>
+        <a href="#" data-view-link="contact" onclick="showView('contact'); return false;">Contact</a>
         <a class="cta" href="tel:0404160274">Call 0404 160 274</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero" id="home">
+    <section class="hero page-block" id="home" data-page-block="home">
       <div class="wrap hero-grid">
         <div>
           <span class="eyebrow">Gold Coast Pressure Cleaning</span>
@@ -423,7 +430,7 @@
       </div>
     </section>
 
-    <div class="trust">
+    <div class="trust page-block" data-page-block="home">
       <div class="wrap">
         <div>Gold Coast Based</div>
         <div>Residential & Commercial</div>
@@ -431,7 +438,7 @@
       </div>
     </div>
 
-    <section class="services" id="services">
+    <section class="services page-block" id="services" data-page-block="services">
       <div class="wrap">
         <div class="section-title">
           <h2>Exterior cleaning that makes a difference.</h2>
@@ -467,7 +474,7 @@
       </div>
     </section>
 
-    <section class="quote" id="quote">
+    <section class="quote page-block" id="quote" data-page-block="contact">
       <div class="wrap quote-grid">
         <div class="quote-copy">
           <span class="eyebrow">Get a Quote</span>
@@ -523,7 +530,7 @@
       </div>
     </section>
 
-    <section class="contact" id="contact">
+    <section class="contact page-block" id="contact" data-page-block="contact">
       <div class="wrap contact-box">
         <div>
           <h2>Need it cleaned?</h2>
@@ -542,5 +549,33 @@
       <div>www.amppressurecleaning.com.au &nbsp; | &nbsp; amppressurecleaning@gmail.com &nbsp; | &nbsp; 0404 160 274</div>
     </div>
   </footer>
+
+  <script>
+    function showView(view) {
+      var blocks = document.querySelectorAll('[data-page-block]');
+      blocks.forEach(function(block) {
+        if (view === 'home') {
+          block.style.display = '';
+        } else {
+          block.style.display = (block.getAttribute('data-page-block') === view) ? '' : 'none';
+        }
+      });
+
+      // Put the selected content at the very top of the embedded page itself.
+      window.scrollTo(0, 0);
+
+      // Update active nav appearance.
+      document.querySelectorAll('.links a[data-view-link]').forEach(function(link) {
+        link.classList.remove('active-tab');
+      });
+      var active = document.querySelector('.links a[data-view-link="' + view + '"]');
+      if (active) active.classList.add('active-tab');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      showView('home');
+    });
+  </script>
+
 </body>
 </html>
