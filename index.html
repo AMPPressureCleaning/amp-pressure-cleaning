@@ -58,7 +58,7 @@
     }
     .logo img{
       display:block;
-      width:220px;
+      width:290px;
       max-width:44vw;
       height:auto;
     }
@@ -380,7 +380,7 @@
       .cards,.form-grid{grid-template-columns:1fr}
       .field.full{grid-column:auto}
       .topbar .wrap{justify-content:center;gap:10px 16px}
-      .logo img{width:180px}
+      .logo img{width:210px}
       .nav{min-height:74px}
       h1{letter-spacing:-1.8px}
     }
@@ -389,8 +389,6 @@
 <body>
   <div class="topbar">
     <div class="wrap">
-      <a href="tel:0404160274">Ph: 0404 160 274</a>
-      <a href="#quote">amppressurecleaning@gmail.com</a>
     </div>
   </div>
 
@@ -401,7 +399,6 @@
       </a>
       <nav class="links" aria-label="Primary navigation">
         <a href="#services">Services</a>
-        <a href="#work">Our Work</a>
         <a href="#quote">Contact</a>
         <a class="cta" href="tel:0404160274">Call 0404 160 274</a>
       </nav>
@@ -469,26 +466,6 @@
         </div>
       </div>
     </section>
-
-    <section id="work">
-      <div class="wrap work-grid">
-        <div class="work-photo">
-          <img src="assets/amp-pressure-cleaning-photo-2.jpg" alt="AMP Pressure Cleaning surface cleaning" />
-        </div>
-        <div class="work-copy">
-          <span class="eyebrow">Real work. Real results.</span>
-          <h2>Clean presentation starts from the ground up.</h2>
-          <p>Whether it is a residential driveway or a commercial storefront, AMP Pressure Cleaning focuses on a professional finish and a straightforward, reliable service.</p>
-          <ul class="ticks">
-            <li>Residential pressure cleaning</li>
-            <li>Commercial exterior cleaning</li>
-            <li>Driveways, paths and entry areas</li>
-            <li>Soft washing for suitable surfaces</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
 
     <section class="quote" id="quote">
       <div class="wrap quote-grid">
@@ -574,7 +551,9 @@
         var target = document.querySelector(id);
         if (target) {
           event.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          var headerOffset = 110;
+          var top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: top, behavior: 'smooth' });
         }
       });
     });
