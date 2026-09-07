@@ -29,7 +29,19 @@
     }
     a{text-decoration:none;color:inherit}
     .wrap{width:min(1180px,92%);margin:0 auto}
-header{
+    .topbar{
+      background:var(--navy);
+      color:#fff;
+      font-size:14px;
+      padding:10px 0;
+    }
+    .topbar .wrap{
+      display:flex;
+      justify-content:flex-end;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+    header{
       position:sticky;
       top:0;
       z-index:20;
@@ -46,7 +58,7 @@ header{
     }
     .logo img{
       display:block;
-      width:348px;
+      width:392px;
       max-width:44vw;
       height:auto;
     }
@@ -367,13 +379,19 @@ header{
     @media(max-width:560px){
       .cards,.form-grid{grid-template-columns:1fr}
       .field.full{grid-column:auto}
-      .logo img{width:252px}
+      .topbar .wrap{justify-content:center;gap:10px 16px}
+      .logo img{width:284px}
       .nav{min-height:74px}
       h1{letter-spacing:-1.8px}
     }
   </style>
 </head>
 <body>
+  <div class="topbar">
+    <div class="wrap">
+    </div>
+  </div>
+
   <header>
     <div class="wrap nav">
       <a class="logo" href="#home" aria-label="AMP Pressure Cleaning home">
