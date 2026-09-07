@@ -1089,7 +1089,7 @@
           <a class="btn secondary" href="tel:0404160274">Prefer to call? 0404 160 274</a>
         </div>
 
-        <form id="quote-form" class="quote-form" action="https://formspree.io/f/meaqrjrp" method="POST">
+        <form id="quote-form" class="quote-form" action="https://formspree.io/f/meaqrjrp" method="POST" onsubmit="sendQuote(); return false;">
           <input type="hidden" name="_subject" value="New AMP Pressure Cleaning Quote Request" />
           <div class="form-grid">
             <div class="field">
@@ -1125,7 +1125,7 @@
               <textarea id="message" name="message" placeholder="Tell us a little about the area you need cleaned..." required></textarea>
             </div>
           </div>
-          <button class="btn primary" type="submit">SEND QUOTE REQUEST</button>
+          <button class="btn primary" type="button" onclick="sendQuote()">SEND QUOTE REQUEST</button>
           <div id="quote-form-status" class="form-note" style="display:none;margin-top:14px;font-weight:700;"></div>
           <div class="form-note">Your enquiry will be sent directly to AMP Pressure Cleaning.</div>
         </form>
@@ -1178,53 +1178,61 @@
     });
   </script>
 
-
   <script>
-    (function () {
+    async function sendQuote() {
       const form = document.getElementById('quote-form');
       const status = document.getElementById('quote-form-status');
-      if (!form || !status) return;
+      const button = form ? form.querySelector('button[onclick="sendQuote()"]') : null;
 
-      form.addEventListener('submit', async function (event) {
-        event.preventDefault();
+      if (!form) return false;
 
-        const submitButton = form.querySelector('button[type="submit"]');
-        const originalText = submitButton ? submitButton.textContent : '';
+      if (!form.reportValidity()) return false;
 
-        if (submitButton) {
-          submitButton.disabled = true;
-          submitButton.textContent = 'SENDING...';
-        }
+      if (button) {
+        button.disabled = true;
+        button.textContent = 'SENDING...';
+      }
 
+      if (status) {
         status.style.display = 'none';
         status.textContent = '';
+      }
 
-        try {
-          const response = await fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-          });
+      try {
+        const response = await fetch('https://formspree.io/f/meaqrjrp', {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
 
-          if (response.ok) {
-            form.reset();
+        if (response.ok) {
+          form.reset();
+          if (status) {
             status.textContent = 'Thanks — your quote request has been sent to AMP Pressure Cleaning.';
             status.style.display = 'block';
-          } else {
+          }
+        } else {
+          if (status) {
             status.textContent = 'There was a problem sending your request. Please try again.';
             status.style.display = 'block';
           }
-        } catch (error) {
+        }
+      } catch (error) {
+        if (status) {
           status.textContent = 'There was a problem sending your request. Please try again.';
           status.style.display = 'block';
-        } finally {
-          if (submitButton) {
-            submitButton.disabled = false;
-            submitButton.textContent = originalText;
-          }
         }
-      });
-    })();
+      } finally {
+        if (button) {
+          button.disabled = false;
+          button.textContent = 'SEND QUOTE REQUEST';
+        }
+      }
+
+      return false;
+    }
   </script>
 
 </body>
