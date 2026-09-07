@@ -551,9 +551,7 @@
         var target = document.querySelector(id);
         if (target) {
           event.preventDefault();
-          var headerOffset = 110;
-          var top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-          window.scrollTo({ top: top, behavior: 'smooth' });
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
     });
