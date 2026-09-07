@@ -329,18 +329,62 @@
       .field.full{grid-column:auto}      h1{letter-spacing:-1.8px}
     }
 
+    .hero-brand{
+      width:100%;
+      text-align:center;
+      margin-bottom:14px;
+    }
+    .hero-brand .eyebrow{
+      display:block;
+      text-align:center;
+      margin-top:8px;
+    }
     .hero-amp-logo{
       display:block;
-      width:360px;
-      max-width:70%;
+      width:620px;
+      max-width:96%;
       height:auto;
-      margin:0 auto 12px auto;
+      margin:0 auto;
     }
     @media(max-width:700px){
       .hero-amp-logo{
-        width:290px;
-        max-width:78%;
-        margin:0 auto 10px auto;
+        width:430px;
+        max-width:96%;
+      }
+    }
+
+  
+    .bottom-contact-centred{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      width:100%;
+    }
+    .need-call-row{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:38px;
+      flex-wrap:wrap;
+      width:100%;
+    }
+    .need-call-row h2{
+      margin:0;
+      text-align:center;
+    }
+    .bottom-contact-copy{
+      width:100%;
+      text-align:center;
+      margin:96px auto 0;
+    }
+    @media(max-width:700px){
+      .need-call-row{
+        gap:20px;
+      }
+      .bottom-contact-copy{
+        margin-top:64px;
       }
     }
 
@@ -351,8 +395,10 @@
     <section class="hero page-block" id="home" data-page-block="home">
       <div class="wrap hero-grid">
         <div>
-          <img class="hero-amp-logo" src="assets/amp-pressure-cleaning-logo.png" alt="AMP Pressure Cleaning" />
-          <span class="eyebrow">Gold Coast Pressure Cleaning</span>
+          <div class="hero-brand">
+            <img class="hero-amp-logo" src="assets/amp-pressure-cleaning-logo.png" alt="AMP Pressure Cleaning" />
+            <span class="eyebrow">Gold Coast Pressure Cleaning</span>
+          </div>
           <h1>Bring your property <span class="accent">back to life.</span></h1>
           <p>Professional pressure cleaning for homes, businesses and exterior surfaces across the Gold Coast. Reliable service, powerful equipment and a clean finish you can see.</p>
           <div class="hero-actions">
@@ -467,14 +513,12 @@
     </section>
 
     <section class="contact page-block" id="contact" data-page-block="contact">
-      <div class="wrap contact-box">
-        <div>
+      <div class="wrap bottom-contact-centred">
+        <div class="need-call-row">
           <h2>Need it cleaned?</h2>
-          <a class="btn primary" href="tel:0404160274" style="margin-top:14px">Call AMP Pressure Cleaning</a>
-          <p>Servicing the Gold Coast. Get in touch for a quote.</p>
+          <a class="btn primary" href="tel:0404160274">Call AMP Pressure Cleaning</a>
         </div>
-        <div class="contact-actions">
-        </div>
+        <p class="bottom-contact-copy">Servicing the Gold Coast. Get in touch for a quote.</p>
       </div>
     </section>
   </main>
