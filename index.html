@@ -29,11 +29,11 @@
     }
     a{text-decoration:none;color:inherit}
     .wrap{width:min(1180px,92%);margin:0 auto}
-    .hero{
+.hero{
       background:
         radial-gradient(circle at 10% 10%, rgba(0,169,255,.18), transparent 34%),
         linear-gradient(135deg,#eef7ff 0%,#ffffff 58%);
-      padding:30px 0 66px;
+      padding:28px 0 66px;
       overflow:hidden;
     }
     .hero-grid{
@@ -230,7 +230,7 @@
     }
     footer .wrap{
       display:flex;
-      justify-content:center;
+      justify-content:space-between;
       gap:18px;
       flex-wrap:wrap;
     }
@@ -318,7 +318,7 @@
 
     @media(max-width:900px){
       .hero-grid,.work-grid,.contact-box,.quote-grid{grid-template-columns:1fr}
-      .hero{padding-top:48px}
+      .hero{padding-top:28px}
       .hero-photo{transform:none}
       .cards{grid-template-columns:1fr 1fr}
       .contact-actions{justify-content:flex-start}
@@ -326,57 +326,21 @@
     }
     @media(max-width:560px){
       .cards,.form-grid{grid-template-columns:1fr}
-      .field.full{grid-column:auto}
-      .logo img{width:378px;max-width:90vw}
-      .nav{min-height:74px}
-      h1{letter-spacing:-1.8px}
-    }
-  
-    .bottom-contact-centred{
-      display:flex !important;
-      flex-direction:column !important;
-      align-items:center !important;
-      justify-content:center !important;
-      text-align:center !important;
-      width:100% !important;
-    }
-    .bottom-contact-centred .need-call-row{
-      display:flex !important;
-      align-items:center !important;
-      justify-content:center !important;
-      gap:36px !important;
-      flex-wrap:wrap !important;
-      width:100% !important;
-      text-align:center !important;
-    }
-    .bottom-contact-centred .need-call-row h2{
-      margin:0 !important;
-      text-align:center !important;
-    }
-    .bottom-contact-centred .bottom-contact-copy{
-      margin:96px auto 0 !important;
-      text-align:center !important;
-      width:100% !important;
-    }
-    @media(max-width:700px){
-      .bottom-contact-centred .need-call-row{
-        gap:20px !important;
-      }
+      .field.full{grid-column:auto}      h1{letter-spacing:-1.8px}
     }
 
-  
     .hero-amp-logo{
       display:block;
       width:180px;
-      max-width:40%;
+      max-width:42%;
       height:auto;
-      margin:0 0 10px 0;
+      margin:0 0 12px 0;
     }
     @media(max-width:700px){
       .hero-amp-logo{
         width:145px;
-        max-width:55%;
-        margin-bottom:8px;
+        max-width:58%;
+        margin-bottom:10px;
       }
     }
 
@@ -384,10 +348,10 @@
 </head>
 <body>
 <main>
-    <section class="hero" id="home">
+    <section class="hero page-block" id="home" data-page-block="home">
       <div class="wrap hero-grid">
         <div>
-          <img class="hero-amp-logo" src="amp-pressure-cleaning-logo-small.png" alt="AMP Pressure Cleaning" />
+          <img class="hero-amp-logo" src="assets/amp-pressure-cleaning-logo.png" alt="AMP Pressure Cleaning" />
           <span class="eyebrow">Gold Coast Pressure Cleaning</span>
           <h1>Bring your property <span class="accent">back to life.</span></h1>
           <p>Professional pressure cleaning for homes, businesses and exterior surfaces across the Gold Coast. Reliable service, powerful equipment and a clean finish you can see.</p>
@@ -402,7 +366,7 @@
       </div>
     </section>
 
-    <div class="trust">
+    <div class="trust page-block" data-page-block="home">
       <div class="wrap">
         <div>Gold Coast Based</div>
         <div>Residential & Commercial</div>
@@ -410,7 +374,7 @@
       </div>
     </div>
 
-    <section class="services" id="services">
+    <section class="services page-block" id="services" data-page-block="services">
       <div class="wrap">
         <div class="section-title">
           <h2>Exterior cleaning that makes a difference.</h2>
@@ -446,7 +410,7 @@
       </div>
     </section>
 
-    <section class="quote" id="quote">
+    <section class="quote page-block" id="quote" data-page-block="contact">
       <div class="wrap quote-grid">
         <div class="quote-copy">
           <span class="eyebrow">Get a Quote</span>
@@ -502,13 +466,15 @@
       </div>
     </section>
 
-    <section class="contact" id="contact">
-      <div class="wrap contact-box bottom-contact-centred">
-        <div class="need-call-row">
+    <section class="contact page-block" id="contact" data-page-block="contact">
+      <div class="wrap contact-box">
+        <div>
           <h2>Need it cleaned?</h2>
-          <a class="btn primary" href="tel:0404160274">Call AMP Pressure Cleaning</a>
+          <a class="btn primary" href="tel:0404160274" style="margin-top:14px">Call AMP Pressure Cleaning</a>
+          <p>Servicing the Gold Coast. Get in touch for a quote.</p>
         </div>
-        <p class="bottom-contact-copy">Servicing the Gold Coast. Get in touch for a quote.</p>
+        <div class="contact-actions">
+        </div>
       </div>
     </section>
   </main>
@@ -521,18 +487,29 @@
   </footer>
 
   <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link){
-      link.addEventListener('click', function(event){
-        var id = this.getAttribute('href');
-        if (!id || id === '#') return;
-        var target = document.querySelector(id);
-        if (target) {
-          event.preventDefault();
-          var headerOffset = 110;
-          var top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
-          window.scrollTo({ top: top, behavior: 'smooth' });
+    function showView(view) {
+      var blocks = document.querySelectorAll('[data-page-block]');
+      blocks.forEach(function(block) {
+        if (view === 'home') {
+          block.style.display = '';
+        } else {
+          block.style.display = (block.getAttribute('data-page-block') === view) ? '' : 'none';
         }
       });
+
+      // Put the selected content at the very top of the embedded page itself.
+      window.scrollTo(0, 0);
+
+      // Update active nav appearance.
+      document.querySelectorAll('.links a[data-view-link]').forEach(function(link) {
+        link.classList.remove('active-tab');
+      });
+      var active = document.querySelector('.links a[data-view-link="' + view + '"]');
+      if (active) active.classList.add('active-tab');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      showView('home');
     });
   </script>
 
