@@ -53,13 +53,13 @@
       min-height:86px;
       display:flex;
       align-items:center;
-      justify-content:space-between;
+      justify-content:center;
       gap:30px;
     }
     .logo img{
       display:block;
-      width:392px;
-      max-width:44vw;
+      width:588px;
+      max-width:90vw;
       height:auto;
     }
     .links{
@@ -281,7 +281,7 @@
     }
     footer .wrap{
       display:flex;
-      justify-content:space-between;
+      justify-content:center;
       gap:18px;
       flex-wrap:wrap;
     }
@@ -380,15 +380,9 @@
       .cards,.form-grid{grid-template-columns:1fr}
       .field.full{grid-column:auto}
       .topbar .wrap{justify-content:center;gap:10px 16px}
-      .logo img{width:284px}
+      .logo img{width:426px;max-width:90vw}
       .nav{min-height:74px}
       h1{letter-spacing:-1.8px}
-    }
-  
-    .links a.active-tab{
-      color:var(--blue);
-      border-bottom:2px solid currentColor;
-      padding-bottom:4px;
     }
 
   </style>
@@ -404,11 +398,6 @@
       <a class="logo" href="#" onclick="showView('home'); return false;" aria-label="AMP Pressure Cleaning home">
         <img src="assets/amp-pressure-cleaning-logo.png" alt="AMP Pressure Cleaning logo" />
       </a>
-      <nav class="links" aria-label="Primary navigation">
-        <a href="#" data-view-link="services" onclick="showView('services'); return false;">Services</a>
-        <a href="#" data-view-link="contact" onclick="showView('contact'); return false;">Contact</a>
-        <a class="cta" href="tel:0404160274">Call 0404 160 274</a>
-      </nav>
     </div>
   </header>
 
