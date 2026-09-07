@@ -371,41 +371,36 @@ header{
       h1{letter-spacing:-1.8px}
     }
   
-    .need-call-row{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:32px;
-      flex-wrap:wrap;
-      width:100%;
-      text-align:center;
+    .bottom-contact-centred{
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:center !important;
+      justify-content:center !important;
+      text-align:center !important;
+      width:100% !important;
     }
-    .need-call-row h2{
-      margin:0;
+    .bottom-contact-centred .need-call-row{
+      display:flex !important;
+      align-items:center !important;
+      justify-content:center !important;
+      gap:36px !important;
+      flex-wrap:wrap !important;
+      width:100% !important;
+      text-align:center !important;
+    }
+    .bottom-contact-centred .need-call-row h2{
+      margin:0 !important;
+      text-align:center !important;
+    }
+    .bottom-contact-centred .bottom-contact-copy{
+      margin:96px auto 0 !important;
+      text-align:center !important;
+      width:100% !important;
     }
     @media(max-width:700px){
-      .need-call-row{
-        gap:18px;
+      .bottom-contact-centred .need-call-row{
+        gap:20px !important;
       }
-    }
-
-  
-    .contact .container{
-      text-align:center;
-    }
-    .contact .need-call-row{
-      justify-content:center;
-    }
-    .contact .muted,
-    .contact p{
-      text-align:center;
-      margin-left:auto;
-      margin-right:auto;
-    }
-
-  
-    .contact .contact-box > div:first-child > p{
-      margin-top:96px;
     }
 
   </style>
@@ -538,16 +533,12 @@ header{
     </section>
 
     <section class="contact" id="contact">
-      <div class="wrap contact-box">
-        <div>
-          <div class="need-call-row">
-            <h2>Need it cleaned?</h2>
-            <a class="btn primary" href="tel:0404160274">Call AMP Pressure Cleaning</a>
-          </div>
-          <p>Servicing the Gold Coast. Get in touch for a quote.</p>
+      <div class="wrap contact-box bottom-contact-centred">
+        <div class="need-call-row">
+          <h2>Need it cleaned?</h2>
+          <a class="btn primary" href="tel:0404160274">Call AMP Pressure Cleaning</a>
         </div>
-        <div class="contact-actions">
-        </div>
+        <p class="bottom-contact-copy">Servicing the Gold Coast. Get in touch for a quote.</p>
       </div>
     </section>
   </main>
