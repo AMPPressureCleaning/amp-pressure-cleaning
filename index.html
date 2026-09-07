@@ -29,19 +29,7 @@
     }
     a{text-decoration:none;color:inherit}
     .wrap{width:min(1180px,92%);margin:0 auto}
-    .topbar{
-      background:var(--navy);
-      color:#fff;
-      font-size:14px;
-      padding:10px 0;
-    }
-    .topbar .wrap{
-      display:flex;
-      justify-content:flex-end;
-      gap:24px;
-      flex-wrap:wrap;
-    }
-    header{
+header{
       position:sticky;
       top:0;
       z-index:20;
@@ -58,7 +46,7 @@
     }
     .logo img{
       display:block;
-      width:588px;
+      width:522px;
       max-width:90vw;
       height:auto;
     }
@@ -368,7 +356,6 @@
     }
 
     @media(max-width:900px){
-      .links a:not(.cta){display:none}
       .hero-grid,.work-grid,.contact-box,.quote-grid{grid-template-columns:1fr}
       .hero{padding-top:48px}
       .hero-photo{transform:none}
@@ -379,30 +366,61 @@
     @media(max-width:560px){
       .cards,.form-grid{grid-template-columns:1fr}
       .field.full{grid-column:auto}
-      .topbar .wrap{justify-content:center;gap:10px 16px}
-      .logo img{width:426px;max-width:90vw}
+      .logo img{width:378px;max-width:90vw}
       .nav{min-height:74px}
       h1{letter-spacing:-1.8px}
+    }
+  
+    .need-call-row{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:32px;
+      flex-wrap:wrap;
+      width:100%;
+      text-align:center;
+    }
+    .need-call-row h2{
+      margin:0;
+    }
+    @media(max-width:700px){
+      .need-call-row{
+        gap:18px;
+      }
+    }
+
+  
+    .contact .container{
+      text-align:center;
+    }
+    .contact .need-call-row{
+      justify-content:center;
+    }
+    .contact .muted,
+    .contact p{
+      text-align:center;
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+  
+    .contact .contact-box > div:first-child > p{
+      margin-top:96px;
     }
 
   </style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="wrap">
-    </div>
-  </div>
-
   <header>
     <div class="wrap nav">
-      <a class="logo" href="#" onclick="showView('home'); return false;" aria-label="AMP Pressure Cleaning home">
+      <a class="logo" href="#home" aria-label="AMP Pressure Cleaning home">
         <img src="assets/amp-pressure-cleaning-logo.png" alt="AMP Pressure Cleaning logo" />
       </a>
     </div>
   </header>
 
   <main>
-    <section class="hero page-block" id="home" data-page-block="home">
+    <section class="hero" id="home">
       <div class="wrap hero-grid">
         <div>
           <span class="eyebrow">Gold Coast Pressure Cleaning</span>
@@ -419,7 +437,7 @@
       </div>
     </section>
 
-    <div class="trust page-block" data-page-block="home">
+    <div class="trust">
       <div class="wrap">
         <div>Gold Coast Based</div>
         <div>Residential & Commercial</div>
@@ -427,7 +445,7 @@
       </div>
     </div>
 
-    <section class="services page-block" id="services" data-page-block="services">
+    <section class="services" id="services">
       <div class="wrap">
         <div class="section-title">
           <h2>Exterior cleaning that makes a difference.</h2>
@@ -463,7 +481,7 @@
       </div>
     </section>
 
-    <section class="quote page-block" id="quote" data-page-block="contact">
+    <section class="quote" id="quote">
       <div class="wrap quote-grid">
         <div class="quote-copy">
           <span class="eyebrow">Get a Quote</span>
@@ -519,11 +537,13 @@
       </div>
     </section>
 
-    <section class="contact page-block" id="contact" data-page-block="contact">
+    <section class="contact" id="contact">
       <div class="wrap contact-box">
         <div>
-          <h2>Need it cleaned?</h2>
-          <a class="btn primary" href="tel:0404160274" style="margin-top:14px">Call AMP Pressure Cleaning</a>
+          <div class="need-call-row">
+            <h2>Need it cleaned?</h2>
+            <a class="btn primary" href="tel:0404160274">Call AMP Pressure Cleaning</a>
+          </div>
           <p>Servicing the Gold Coast. Get in touch for a quote.</p>
         </div>
         <div class="contact-actions">
@@ -540,29 +560,18 @@
   </footer>
 
   <script>
-    function showView(view) {
-      var blocks = document.querySelectorAll('[data-page-block]');
-      blocks.forEach(function(block) {
-        if (view === 'home') {
-          block.style.display = '';
-        } else {
-          block.style.display = (block.getAttribute('data-page-block') === view) ? '' : 'none';
+    document.querySelectorAll('a[href^="#"]').forEach(function(link){
+      link.addEventListener('click', function(event){
+        var id = this.getAttribute('href');
+        if (!id || id === '#') return;
+        var target = document.querySelector(id);
+        if (target) {
+          event.preventDefault();
+          var headerOffset = 110;
+          var top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: top, behavior: 'smooth' });
         }
       });
-
-      // Put the selected content at the very top of the embedded page itself.
-      window.scrollTo(0, 0);
-
-      // Update active nav appearance.
-      document.querySelectorAll('.links a[data-view-link]').forEach(function(link) {
-        link.classList.remove('active-tab');
-      });
-      var active = document.querySelector('.links a[data-view-link="' + view + '"]');
-      if (active) active.classList.add('active-tab');
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      showView('home');
     });
   </script>
 
