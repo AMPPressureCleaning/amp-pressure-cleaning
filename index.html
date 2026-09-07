@@ -398,8 +398,8 @@
         <img src="assets/amp-pressure-cleaning-logo.png" alt="AMP Pressure Cleaning logo" />
       </a>
       <nav class="links" aria-label="Primary navigation">
-        <a href="#services">Services</a>
-        <a href="#quote">Contact</a>
+        <a href="#services" onclick="goToSection(event, 'services')">Services</a>
+        <a href="#quote" onclick="goToSection(event, 'quote')">Contact</a>
         <a class="cta" href="tel:0404160274">Call 0404 160 274</a>
       </nav>
     </div>
@@ -414,7 +414,7 @@
           <p>Professional pressure cleaning for homes, businesses and exterior surfaces across the Gold Coast. Reliable service, powerful equipment and a clean finish you can see.</p>
           <div class="hero-actions">
             <a class="btn primary" href="tel:0404160274">Call for a Quote</a>
-            <a class="btn secondary" href="https://www.instagram.com/amp_pressurecleaning/" target="_blank" rel="noopener noreferrer" aria-label="Add AMP Pressure Cleaning on Instagram">◎ Add us on Instagram</a>
+            <a class="btn secondary" href="https://www.instagram.com/amp_pressurecleaning/" target="_blank" rel="noopener noreferrer" aria-label="Follow AMP Pressure Cleaning on Instagram">◎ Follow us on Instagram</a>
           </div>
         </div>
         <div class="hero-photo">
@@ -544,17 +544,22 @@
   </footer>
 
   <script>
-    document.querySelectorAll('a[href^="#"]').forEach(function(link){
-      link.addEventListener('click', function(event){
-        var id = this.getAttribute('href');
-        if (!id || id === '#') return;
-        var target = document.querySelector(id);
-        if (target) {
-          event.preventDefault();
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+    function goToSection(event, id) {
+      if (event) event.preventDefault();
+      var target = document.getElementById(id);
+      if (!target) return false;
+
+      var header = document.querySelector('header');
+      var offset = header ? header.offsetHeight + 12 : 0;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: top,
+        behavior: 'smooth'
       });
-    });
+
+      return false;
+    }
   </script>
 
 </body>
