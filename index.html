@@ -540,17 +540,71 @@
       width:100% !important;
     }
 
+  
+    /* SCREENSHOT FIX: logo + ALL copy are one compact centered stack */
+    .hero{
+      padding-top:0 !important;
+    }
+    .hero-grid{
+      align-items:start !important;
+    }
+    .hero-copy-fixed{
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:center !important;
+      justify-content:flex-start !important;
+      text-align:center !important;
+      gap:0 !important;
+      padding:0 !important;
+      margin:0 !important;
+    }
+    .hero-copy-fixed .hero-amp-logo{
+      display:block !important;
+      width:620px !important;
+      max-width:96% !important;
+      height:auto !important;
+      margin:0 auto !important;
+      padding:0 !important;
+    }
+    .hero-copy-fixed .eyebrow{
+      display:block !important;
+      margin:6px auto 0 !important;
+      padding:0 !important;
+      line-height:1 !important;
+      text-align:center !important;
+    }
+    .hero-copy-fixed h1{
+      margin:5px auto 0 !important;
+      padding:0 !important;
+      line-height:.98 !important;
+      text-align:center !important;
+    }
+    .hero-copy-fixed p{
+      margin:8px auto 0 !important;
+      padding:0 !important;
+      line-height:1.3 !important;
+      text-align:center !important;
+    }
+    .hero-copy-fixed .hero-actions{
+      display:flex !important;
+      justify-content:center !important;
+      margin:10px auto 0 !important;
+      padding:0 !important;
+      width:100% !important;
+    }
+    .hero-photo{
+      margin-top:0 !important;
+    }
+
   </style>
 </head>
 <body>
 <main>
     <section class="hero page-block" id="home" data-page-block="home">
       <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <div class="hero-brand">
-            <img class="hero-amp-logo" src="assets/amp-pressure-cleaning-logo.png" alt="AMP Pressure Cleaning" />
-            <span class="eyebrow">Gold Coast Pressure Cleaning</span>
-          </div>
+        <div class="hero-copy hero-copy-fixed">
+          <img class="hero-amp-logo" src="assets/amp-pressure-cleaning-logo.png" alt="AMP Pressure Cleaning" />
+          <div class="eyebrow">Gold Coast Pressure Cleaning</div>
           <h1>Bring your property <span class="accent">back to life.</span></h1>
           <p>Professional pressure cleaning for homes, businesses and exterior surfaces across the Gold Coast. Reliable service, powerful equipment and a clean finish you can see.</p>
           <div class="hero-actions">
