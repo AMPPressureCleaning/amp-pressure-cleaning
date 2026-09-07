@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AMP Pressure Cleaning - professional pressure cleaning and exterior cleaning across the Gold Coast." />
+  <title>AMP Pressure Cleaning | Gold Coast</title>
+  <style>
+    :root{
+      --navy:#07172b;
+      --navy2:#0c2748;
+      --blue:#00a9ff;
+      --blue2:#0073d7;
+      --orange:#ff9f00;
+      --white:#ffffff;
+      --light:#f4f8fc;
+      --ink:#0b1730;
+      --muted:#5b6b7f;
+      --shadow:0 18px 55px rgba(7,23,43,.16);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      background:#fff;
+    }
+    a{text-decoration:none;color:inherit}
+    .wrap{width:min(1180px,92%);margin:0 auto}
+    .topbar{
+      background:var(--navy);
+      color:#fff;
+      font-size:14px;
+      padding:10px 0;
+    }
+    .topbar .wrap{
+      display:flex;
+      justify-content:flex-end;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+    header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      background:rgba(255,255,255,.96);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid #e7eef5;
+    }
+    .nav{
+      min-height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+    }
+    .logo img{
+      display:block;
+      width:220px;
+      max-width:44vw;
+      height:auto;
+    }
+    .links{
+      display:flex;
+      align-items:center;
+      gap:24px;
+      font-weight:700;
+      color:#18304c;
+    }
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 20px;
+      border-radius:999px;
+      background:linear-gradient(135deg,var(--blue),var(--blue2));
+      color:#fff!important;
+      font-weight:800;
+      box-shadow:0 9px 25px rgba(0,115,215,.25);
+    }
+    .hero{
+      background:
+        radial-gradient(circle at 10% 10%, rgba(0,169,255,.18), transparent 34%),
+        linear-gradient(135deg,#eef7ff 0%,#ffffff 58%);
+      padding:72px 0 66px;
+      overflow:hidden;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      align-items:center;
+      gap:56px;
+    }
+    .eyebrow{
+      display:inline-block;
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:1.7px;
+      color:var(--blue2);
+      text-transform:uppercase;
+      margin-bottom:16px;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(42px,6vw,74px);
+      line-height:.98;
+      letter-spacing:-2.8px;
+      color:var(--navy);
+      max-width:720px;
+    }
+    .accent{color:var(--blue2)}
+    .hero p{
+      max-width:650px;
+      margin:24px 0 28px;
+      font-size:20px;
+      line-height:1.55;
+      color:var(--muted);
+    }
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:54px;
+      padding:0 24px;
+      border-radius:999px;
+      font-weight:900;
+    }
+    .btn.primary{background:var(--orange);color:#101820}
+    .btn.secondary{border:2px solid #b7c8d8;background:#fff;color:var(--navy)}
+    .hero-photo{
+      background:#fff;
+      border-radius:28px;
+      padding:12px;
+      box-shadow:var(--shadow);
+      transform:rotate(1deg);
+    }
+    .hero-photo img{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:18px;
+    }
+    .trust{
+      padding:26px 0;
+      background:var(--navy);
+      color:#fff;
+    }
+    .trust .wrap{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      text-align:center;
+      gap:20px;
+      font-weight:800;
+    }
+    section{padding:86px 0}
+    .section-title{
+      text-align:center;
+      max-width:780px;
+      margin:0 auto 44px;
+    }
+    .section-title h2{
+      margin:0 0 14px;
+      font-size:clamp(34px,4vw,52px);
+      letter-spacing:-1.6px;
+      color:var(--navy);
+    }
+    .section-title p{
+      margin:0;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.6;
+    }
+    .services{
+      background:var(--light);
+    }
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+    .card{
+      background:#fff;
+      border:1px solid #e2ecf5;
+      border-radius:18px;
+      padding:28px 24px;
+      box-shadow:0 10px 30px rgba(7,23,43,.06);
+    }
+    .icon{
+      width:48px;height:48px;border-radius:14px;
+      background:#e6f6ff;
+      display:grid;place-items:center;
+      color:var(--blue2);font-size:24px;font-weight:900;
+      margin-bottom:18px;
+    }
+    .card h3{margin:0 0 10px;font-size:22px;color:var(--navy)}
+    .card p{margin:0;color:var(--muted);line-height:1.55}
+    .work-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:46px;
+      align-items:center;
+    }
+    .work-photo{
+      background:#fff;
+      border-radius:24px;
+      padding:12px;
+      box-shadow:var(--shadow);
+    }
+    .work-photo img{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:14px;
+    }
+    .work-copy h2{
+      margin:0 0 18px;
+      font-size:clamp(34px,4vw,50px);
+      letter-spacing:-1.5px;
+      color:var(--navy);
+    }
+    .work-copy p{
+      font-size:18px;
+      line-height:1.65;
+      color:var(--muted);
+      margin:0 0 24px;
+    }
+    .ticks{
+      list-style:none;
+      margin:0 0 28px;
+      padding:0;
+      display:grid;
+      gap:12px;
+      font-weight:800;
+      color:#17314e;
+    }
+    .ticks li:before{
+      content:"✓";
+      color:var(--blue2);
+      font-weight:900;
+      margin-right:10px;
+    }
+    .contact{
+      background:linear-gradient(135deg,var(--navy),var(--navy2));
+      color:#fff;
+      padding:68px 0;
+    }
+    .contact-box{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:32px;
+      align-items:center;
+    }
+    .contact h2{
+      margin:0 0 10px;
+      font-size:clamp(32px,4vw,48px);
+      letter-spacing:-1.4px;
+    }
+    .contact p{
+      margin:0;
+      color:#cbd9e9;
+      font-size:18px;
+    }
+    .contact-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    footer{
+      background:#04101f;
+      color:#b8c8d8;
+      padding:36px 0;
+      font-size:14px;
+    }
+    footer .wrap{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+    @media(max-width:900px){
+      .links a:not(.cta){display:none}
+      .hero-grid,.work-grid,.contact-box{grid-template-columns:1fr}
+      .hero{padding-top:48px}
+      .hero-photo{transform:none}
+      .cards{grid-template-columns:1fr 1fr}
+      .contact-actions{justify-content:flex-start}
+      .trust .wrap{grid-template-columns:1fr}
+    }
+    @media(max-width:560px){
+      .cards{grid-template-columns:1fr}
+      .topbar .wrap{justify-content:center;gap:10px 16px}
+      .logo img{width:180px}
+      .nav{min-height:74px}
+      h1{letter-spacing:-1.8px}
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <a href="tel:0404160274">Ph: 0404 160 274</a>
+      <a href="mailto:amppressurecleaning@gmail.com">amppressurecleaning@gmail.com</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrap nav">
+      <a class="logo" href="#home" aria-label="AMP Pressure Cleaning home">
+        <img src="assets/amp-pressure-cleaning-logo.png" alt="AMP Pressure Cleaning logo" />
+      </a>
+      <nav class="links" aria-label="Primary navigation">
+        <a href="#services">Services</a>
+        <a href="#work">Our Work</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="tel:0404160274">Call 0404 160 274</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Gold Coast Pressure Cleaning</span>
+          <h1>Bring your property <span class="accent">back to life.</span></h1>
+          <p>Professional pressure cleaning for homes, businesses and exterior surfaces across the Gold Coast. Reliable service, powerful equipment and a clean finish you can see.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="tel:0404160274">Call for a Quote</a>
+            <a class="btn secondary" href="mailto:amppressurecleaning@gmail.com">Email AMP Pressure Cleaning</a>
+            <a class="btn secondary" href="https://www.instagram.com/amp_pressurecleaning/" target="_blank" rel="noopener noreferrer" aria-label="Add AMP Pressure Cleaning on Instagram">◎ Add us on Instagram</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <img src="assets/amp-pressure-cleaning-photo-1.jpg" alt="AMP Pressure Cleaning at work" />
+        </div>
+      </div>
+    </section>
+
+    <div class="trust">
+      <div class="wrap">
+        <div>Gold Coast Based</div>
+        <div>Residential & Commercial</div>
+        <div>Professional Exterior Cleaning</div>
+      </div>
+    </div>
+
+    <section class="services" id="services">
+      <div class="wrap">
+        <div class="section-title">
+          <h2>Exterior cleaning that makes a difference.</h2>
+          <p>From everyday residential cleans to larger commercial areas, AMP Pressure Cleaning helps remove built-up dirt and grime and freshen up tired exterior surfaces.</p>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="icon">01</div>
+            <h3>Driveways</h3>
+            <p>Pressure cleaning for concrete, exposed aggregate and other suitable hard surfaces.</p>
+          </article>
+          <article class="card">
+            <div class="icon">02</div>
+            <h3>Paths & Patios</h3>
+            <p>Freshen up outdoor entertaining areas, footpaths, entries and surrounding hard surfaces.</p>
+          </article>
+          <article class="card">
+            <div class="icon">03</div>
+            <h3>Soft Washing</h3>
+            <p>A lower-pressure cleaning approach for suitable exterior areas where a gentler method is preferred.</p>
+          </article>
+          <article class="card">
+            <div class="icon">04</div>
+            <h3>Roofs</h3>
+            <p>Professional roof cleaning to remove built-up dirt and grime and freshen up suitable roofing surfaces.</p>
+          </article>
+          <article class="card">
+            <div class="icon">05</div>
+            <h3>Commercial</h3>
+            <p>Storefront footpaths, common areas, building exteriors and other commercial cleaning requirements.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="wrap work-grid">
+        <div class="work-photo">
+          <img src="assets/amp-pressure-cleaning-photo-2.jpg" alt="AMP Pressure Cleaning surface cleaning" />
+        </div>
+        <div class="work-copy">
+          <span class="eyebrow">Real work. Real results.</span>
+          <h2>Clean presentation starts from the ground up.</h2>
+          <p>Whether it is a residential driveway or a commercial storefront, AMP Pressure Cleaning focuses on a professional finish and a straightforward, reliable service.</p>
+          <ul class="ticks">
+            <li>Residential pressure cleaning</li>
+            <li>Commercial exterior cleaning</li>
+            <li>Driveways, paths and entry areas</li>
+            <li>Soft washing for suitable surfaces</li>
+          </ul>
+          <a class="btn primary" href="tel:0404160274">Get a Quote</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-box">
+        <div>
+          <h2>Need it cleaned? Call AMP Pressure Cleaning.</h2>
+          <p>Servicing the Gold Coast. Get in touch for a quote.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="btn primary" href="tel:0404160274">0404 160 274</a>
+          <a class="btn secondary" style="color:#fff;border-color:#41607f;background:transparent" href="mailto:amppressurecleaning@gmail.com">Email Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div>© AMP Pressure Cleaning</div>
+      <div>www.amppressurecleaning.com.au &nbsp; | &nbsp; amppressurecleaning@gmail.com &nbsp; | &nbsp; 0404 160 274</div>
+    </div>
+  </footer>
+</body>
+</html>
