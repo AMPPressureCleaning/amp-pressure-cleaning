@@ -614,6 +614,79 @@
       margin:10px auto 0 !important;
     }
 
+  
+    /* FINAL HERO LAYOUT:
+       left content and top photo use equal columns;
+       all left content is centred horizontally AND vertically to the photo */
+    .hero-grid{
+      grid-template-columns:1fr 1fr !important;
+      align-items:stretch !important;
+      gap:36px !important;
+    }
+
+    .hero-copy-fixed{
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:center !important;
+      justify-content:center !important;
+      text-align:center !important;
+      width:100% !important;
+      height:100% !important;
+      margin:0 !important;
+      padding:0 28px !important;
+    }
+
+    /* remove the old gap hack completely */
+    .hero-copy-fixed .hero-amp-logo{
+      width:620px !important;
+      max-width:96% !important;
+      height:auto !important;
+      margin:0 auto !important;
+    }
+
+    .hero-copy-fixed .eyebrow{
+      margin:6px auto 0 !important;
+      text-align:center !important;
+    }
+
+    .hero-copy-fixed h1{
+      margin:6px auto 0 !important;
+      text-align:center !important;
+      max-width:100% !important;
+    }
+
+    .hero-copy-fixed p{
+      margin:10px auto 0 !important;
+      text-align:center !important;
+      max-width:94% !important;
+    }
+
+    .hero-copy-fixed .hero-actions{
+      justify-content:center !important;
+      margin:12px auto 0 !important;
+      width:100% !important;
+    }
+
+    .hero-photo{
+      align-self:stretch !important;
+      margin:0 !important;
+    }
+
+    .hero-photo img{
+      display:block !important;
+      width:100% !important;
+      height:auto !important;
+    }
+
+    @media(max-width:900px){
+      .hero-grid{
+        grid-template-columns:1fr !important;
+      }
+      .hero-copy-fixed{
+        padding:0 12px !important;
+      }
+    }
+
   </style>
 </head>
 <body>
