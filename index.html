@@ -1126,14 +1126,14 @@ html.amp-mobile .trust .wrap{
     if (logo) {
       /* Override the desktop inline !important logo positioning on phones only. */
       logo.style.setProperty("position", "relative", "important");
-      logo.style.setProperty("left", "50%", "important");
+      logo.style.setProperty("left", "auto", "important");
       logo.style.setProperty("right", "auto", "important");
-      logo.style.setProperty("transform", "translateX(-47%)", "important");
+      logo.style.setProperty("transform", "none", "important");
       logo.style.setProperty("display", "block", "important");
       logo.style.setProperty("width", "310px", "important");
       logo.style.setProperty("max-width", "94%", "important");
       logo.style.setProperty("height", "auto", "important");
-      logo.style.setProperty("margin", "0 0 14px 0", "important");
+      logo.style.setProperty("margin", "0 auto 14px auto", "important");
     }
   }
 
@@ -1145,6 +1145,25 @@ html.amp-mobile .trust .wrap{
 })();
 </script>
 
+
+
+<style id="amp-mobile-logo-centre-final">
+html.amp-mobile .hero-copy-fixed{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+}
+html.amp-mobile .hero-copy-fixed .hero-amp-logo{
+  position:relative !important;
+  left:auto !important;
+  right:auto !important;
+  transform:translateX(18px) !important;
+  align-self:center !important;
+  display:block !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+</style>
 
 </head>
 <body>
